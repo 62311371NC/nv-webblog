@@ -1,4 +1,7 @@
+const UserAuthenController = require('./controllers/UserAuthenController')
 const UserController = require('./controllers/UserController')
+const isAuthenController = require('./authen/isAuthenController')
+
 
 module.exports = (app) => {
   /* RESFUL Api for users management */
@@ -24,6 +27,11 @@ module.exports = (app) => {
 
   // get all user
   app.get('/users',
+    isAuthenController,
     UserController.index    
+  )
+
+  app.post('/login',
+    UserAuthenController.login
   )
 }
