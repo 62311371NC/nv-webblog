@@ -11,8 +11,6 @@ passport.use('user',
         jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
         secretOrKey: config.authentication.jwtSecret
     },
-
-    
         async function (jwtPayload, done) {
             try {
                 const user = await User.findOne({
